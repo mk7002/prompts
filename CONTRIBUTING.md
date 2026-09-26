@@ -5,3 +5,4 @@
 3. Include a title, description, prompt, use cases, and notes.
 4. Keep prompts generic and reusable where possible.
 5. Update the category README/index when appropriate.
+6. Add the prompt to the Prompt Index in `SKILL.md`.

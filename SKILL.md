@@ -1,46 +1,72 @@
+---
+name: prompt-library
+description: Reusable prompts for image editing (remove background, people, or objects; replace or clean up backgrounds; enhance photos), image generation, and image styling. Use when the user asks to edit, generate, or restyle an image, or for any task that may match a saved prompt in this library.
+---
+
 # Prompt Library Skill
 
 ## Purpose
 
-Use this repository as the source of truth for reusable AI prompts.
+Use this prompt library as the source of truth for reusable AI prompts. Instead of writing a new prompt from scratch, find the matching prompt below, adapt it to the user's request, and use it.
 
-Repository:
-https://github.com/mk7002/prompts
+Repository: https://github.com/mk7002/prompts
 
 ## How to Use
 
 When a user asks for a task that may have a reusable prompt:
 
-1. Identify the appropriate prompt category.
-2. Locate the most relevant prompt file in this repository.
-3. Read the prompt and understand its intent.
-4. Adapt the prompt to the user's specific context when necessary.
-5. Use the repository prompt as the base instruction rather than inventing a completely new prompt.
-6. Prefer the latest version available in the repository.
-7. Do not reproduce unrelated prompts or the entire prompt library.
+1. Pick the most relevant prompt from the **Prompt Index** below.
+2. Read that prompt file:
+   - If the file is available locally (next to this `SKILL.md`), read it from there.
+   - Otherwise, fetch its raw URL: `https://raw.githubusercontent.com/mk7002/prompts/main/<path>`
+3. Take the text under `## Prompt` as the base instruction and check `## Notes` for tips and limitations.
+4. Fill in any `[bracketed placeholders]` using the user's request. If a placeholder is required and the user hasn't said, choose a sensible default and mention it.
+5. Adapt the wording to the user's context. For example, say "me" and "my" when the user is the subject of their own photo.
+6. Carry out the task with the adapted prompt. If you can edit or generate images, apply the prompt to the user's image. Otherwise, give the user the final prompt to paste into their image tool.
+7. Use only the prompt that is needed. Do not reproduce unrelated prompts or the whole library.
 
-## Categories
+If no prompt fits the request, say so and help the user directly.
 
-- `image/editing`
-- `image/generation`
-- `image/styling`
-- `coding`
-- `writing`
-- `productivity`
+## Prompt Index
 
-## Prompt File Convention
+### Image editing — `image/editing/`
 
-Prompts are stored as Markdown files.
+| Task | File |
+|---|---|
+| Remove the background (transparent, white, or plain color) | `image/editing/remove-background.md` |
+| Replace the background with a studio backdrop (portraits, headshots) | `image/editing/studio-background.md` |
+| Replace the background with a new scene or location | `image/editing/background-replacement.md` |
+| Clean up clutter or distractions in the background | `image/editing/background-cleanup.md` |
+| Remove unwanted people | `image/editing/remove-people.md` |
+| Remove unwanted objects | `image/editing/remove-objects.md` |
+| Replace one object with another | `image/editing/object-replacement.md` |
+| Enhance quality (sharpness, exposure, noise) | `image/editing/image-enhancement.md` |
 
-Typical structure:
+### Image generation — `image/generation/`
 
-```text
-category/
-└── subcategory/
-    └── task-name.md
-```
+| Task | File |
+|---|---|
+| Generate a portrait of a person | `image/generation/portraits.md` |
+| Generate product photography | `image/generation/product-photography.md` |
+| Generate a landscape or scenery | `image/generation/landscapes.md` |
+| Generate a social media image or thumbnail | `image/generation/social-media.md` |
 
-For example: `image/editing/remove-people.md`.
+### Image styling — `image/styling/`
+
+Styles can be combined with a generation prompt or applied to an existing image.
+
+| Style | File |
+|---|---|
+| Cinematic / film look | `image/styling/cinematic.md` |
+| Photorealistic | `image/styling/realistic.md` |
+| Professional / corporate | `image/styling/professional.md` |
+| Artistic (painting, illustration, sketch) | `image/styling/artistic.md` |
+
+### Coming soon
+
+`coding/`, `writing/`, and `productivity/` have no prompts yet.
+
+## Prompt File Format
 
 Each prompt file contains:
 
@@ -51,38 +77,19 @@ Each prompt file contains:
 - `## Use Cases`
 - `## Notes`
 
-Each category folder has a `README.md` that indexes its prompts. Check it first to find the right file.
-
 ## Examples
 
-User request:
+**User:** "Remove the background from this photo."
+Use `image/editing/remove-background.md`. If the user doesn't say what should replace the background, use pure white and mention that transparent is also possible.
 
-> I want to remove unwanted people from a photo.
+**User:** "Remove the people behind me in this photo."
+Use `image/editing/remove-people.md` and refer to the user as "me" when describing the main subject.
 
-Find:
-
-```text
-image/editing/remove-people.md
-```
-
-Use that prompt as the base and adapt it to the user's image/context.
-
-User request:
-
-> Put a soft beige studio background behind me for my LinkedIn photo.
-
-Find:
-
-```text
-image/editing/studio-background.md
-```
-
-Fill in the placeholders from the request (for example, `[color]` → beige, `[gradient / solid backdrop]` → gradient) and adapt the wording, such as referring to "me" when the user is the subject.
+**User:** "Put a soft beige studio background behind me for my LinkedIn photo."
+Use `image/editing/studio-background.md` and fill in the placeholders: `[color]` → beige, `[gradient / solid backdrop]` → gradient.
 
 ## Important
 
-The GitHub repository is the prompt library. The skill provides the instructions for discovering and using the library.
-
-Do not copy the entire repository into the skill.
-
-If the repository cannot be accessed, explain that the prompt source is unavailable rather than inventing repository contents.
+- The repository is the prompt library. This skill only explains how to find and use it.
+- If a prompt file cannot be read, either locally or from its raw URL, tell the user the prompt source is unavailable. Do not invent the prompt's contents.
+- When a prompt is added to the library, add it to the Prompt Index above.

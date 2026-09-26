@@ -5,6 +5,7 @@
 - [Remove Objects](./editing/remove-objects.md)
 - [Remove People](./editing/remove-people.md)
 - [Background Cleanup](./editing/background-cleanup.md)
+- [Remove Background](./editing/remove-background.md)
 - [Background Replacement](./editing/background-replacement.md)
 - [Studio Background](./editing/studio-background.md)
 - [Object Replacement](./editing/object-replacement.md)
